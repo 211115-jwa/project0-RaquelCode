@@ -19,7 +19,7 @@ Presentations to me and QC will be on Wednesday, December 22nd (time TBD).
 
 ## Functional Requirements
 1. As a user, I can view all bicycles.
-    - GET /bicycles
+    - GET /bicycles.
 2. As a user, I can add a new bicycle.
     - POST /bicycles
 3. As a user, I can update a bicycle.
