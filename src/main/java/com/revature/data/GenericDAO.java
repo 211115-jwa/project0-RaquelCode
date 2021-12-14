@@ -5,6 +5,8 @@ package com.revature.data;
 
 import java.util.Set;
 
+import com.revature.beans.Customer;
+
 
 //DAO: data access object
 //an object that is designed for exclusively accessing data (e.g. in a database)
@@ -29,5 +31,6 @@ public interface GenericDAO<D> {
 	public Set<D> getAll();
 	public void update(D dataToUpdate);
 	public void delete(D dataToDelete);
+	//Customer getByUsername(String username);
 
 }
