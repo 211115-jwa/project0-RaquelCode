@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Customer {
+
+
+  public class Customer {
+	private Order order = new Order();
 
 	private int id;
 	private String firstName;
@@ -34,6 +37,14 @@ public class Customer {
 		this.password = password;
 		this.bicycles = bicycles;
 
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	public int getId() {
@@ -82,7 +93,6 @@ public class Customer {
 
 	public void setBicycles(List<Bicycle> bicycles) {
 		this.bicycles = bicycles;
-
 	}
 
 	@Override
@@ -102,13 +112,14 @@ public class Customer {
 		return Objects.equals(bicycles, other.bicycles) && Objects.equals(firstName, other.firstName) && id == other.id
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
 				&& Objects.equals(username, other.username);
-
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", password=" + password + ", bicycles=" + bicycles + "]";
+		return "Customer [order=" + order + ", id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", username=" + username + ", password=" + password + ", bicycles=" + bicycles + "]";
 	}
+
+	
 
 }

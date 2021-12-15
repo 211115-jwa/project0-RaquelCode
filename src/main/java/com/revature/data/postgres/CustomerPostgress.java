@@ -1,4 +1,4 @@
-package com.revature.dara.postgres;
+package com.revature.data.postgres;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

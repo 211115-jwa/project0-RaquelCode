@@ -31,6 +31,6 @@ public interface GenericDAO<D> {
 	public Set<D> getAll();
 	public void update(D dataToUpdate);
 	public void delete(D dataToDelete);
-	//Customer getByUsername(String username);
+	Customer getByUsername(String username);
 
 }

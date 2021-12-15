@@ -1,4 +1,4 @@
-package com.revature.dara.postgres;
+package com.revature.data.postgres;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,7 +33,7 @@ public class BicyclePostgres implements BicycleDAO  {
 			// we need to set the values of the question marks
 			pStmt.setString(1, dataToAdd.getModel()); // question mark index starts at 1
 			pStmt.setString(2, dataToAdd.getBrand());
-			pStmt.setString(3, dataToAdd.getOrder());
+			pStmt.setString(3, dataToAdd.getDescription());
 			
 			
 			
@@ -76,7 +76,7 @@ public class BicyclePostgres implements BicycleDAO  {
 				bicycle.setId(resultSet.getInt(1));
 				bicycle.setModel(resultSet.getString("model"));
 				bicycle.setBrand(resultSet.getString("name"));
-				bicycle.setOrder(resultSet.getString("order"));
+				bicycle.setDescription(resultSet.getString("order"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,7 +98,7 @@ public class BicyclePostgres implements BicycleDAO  {
 				bicycle.setId(resultSet.getInt("id"));
 				bicycle.setModel(resultSet.getString("model"));
 				bicycle.setBrand(resultSet.getString("name"));
-				bicycle.setOrder(resultSet.getString("order-id"));
+				bicycle.setDescription(resultSet.getString("order-id"));
 				
 				allBicycles.add(bicycle);
 			}
@@ -116,7 +116,7 @@ public class BicyclePostgres implements BicycleDAO  {
 			
 			String sql = "update bicycle set model=?, order_id=? where id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, dataToUpdate.getOrder());
+			pStmt.setString(1, dataToUpdate.getDescription());
 			pStmt.setString(1, dataToUpdate.getModel());
 			pStmt.setString(2, dataToUpdate.getBrand());
 			pStmt.setInt(3, dataToUpdate.getId());
@@ -171,7 +171,7 @@ public class BicyclePostgres implements BicycleDAO  {
 			if (resultSet.next()) {
 				bicycle = new Bicycle();
 				bicycle.setId(resultSet.getInt("id"));
-				bicycle.setOrder(resultSet.getString("order"));
+				bicycle.setDescription(resultSet.getString("order"));
 				bicycle.setModel(resultSet.getString("model"));
 				bicycle.setBrand(resultSet.getString("name"));
 				bicycleSet.add(bicycle);
@@ -198,7 +198,7 @@ public class BicyclePostgres implements BicycleDAO  {
 				bicycle = new Bicycle();
 				//getInt(1) gets the first column in my database which is bicycle.id
 				bicycle.setId(resultSet.getInt(1));
-				bicycle.setOrder(resultSet.getString("order"));
+				bicycle.setDescription(resultSet.getString("order"));
 				bicycle.setModel(resultSet.getString("model"));
 				bicycle.setBrand(resultSet.getString("name"));
 				bicycleSet.add(bicycle);
@@ -226,7 +226,7 @@ public class BicyclePostgres implements BicycleDAO  {
 					bicycle = new Bicycle();
 					//getInt(1) gets the first column in my database which is bicycle.id
 					bicycle.setId(resultSet.getInt(1));
-					bicycle.setOrder(resultSet.getString("order"));
+					bicycle.setDescription(resultSet.getString("order"));
 					bicycle.setModel(resultSet.getString("model"));
 					bicycle.setBrand(resultSet.getString("name"));
 					bicycleSet.add(bicycle);
@@ -236,6 +236,13 @@ public class BicyclePostgres implements BicycleDAO  {
 			}
 			return bicycleSet;
 		}
+
+
+	@Override
+	public Customer getByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 		}
 

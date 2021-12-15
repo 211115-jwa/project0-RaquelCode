@@ -8,8 +8,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import com.revature.beans.Bicycle;
-import com.revature.dara.postgres.BicyclePostgres;
 import com.revature.data.BicycleDAO;
+import com.revature.data.postgres.BicyclePostgres;
 
 
 public class BicycleDAOTest {

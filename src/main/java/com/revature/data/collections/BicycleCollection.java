@@ -99,6 +99,11 @@ public class BicycleCollection implements BicycleDAO {
 		}
 		return bicycleSet;
 	}
+	@Override
+	public Customer getByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	

@@ -5,18 +5,17 @@ import java.util.Objects;
 public class Bicycle{
 
 	private int id;
-	private String order;
 	private String model;
 	private String brand;
-	
+	private String description;
 	
 
 	public Bicycle() {
 		super();
-		this.order = "";
+		
 		this.model = "";
 		this.brand = "";
-		
+		this.description= "";
 		
 
 	}
@@ -24,10 +23,10 @@ public class Bicycle{
 	public Bicycle(int id, String order, String model, String brand) {
 		super();
 		this.id = id;
-		this.order = "Date and Number";
+		
 		this.model = "Folding Bike";
 		this.brand = "Alan Bike";
-		
+		this.description = " ";
 		
 	}
 
@@ -37,14 +36,6 @@ public class Bicycle{
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getOrder() {
-		return order;
-	}
-
-	public void setOrder(String name) {
-		this.order = name;
 	}
 
 	public String getModel() {
@@ -63,9 +54,17 @@ public class Bicycle{
 		this.brand = brand;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(brand, id, model, order);
+		return Objects.hash(brand, description, id, model);
 	}
 
 	@Override
@@ -77,16 +76,14 @@ public class Bicycle{
 		if (getClass() != obj.getClass())
 			return false;
 		Bicycle other = (Bicycle) obj;
-		return Objects.equals(brand, other.brand) && id == other.id && Objects.equals(model, other.model)
-				&& Objects.equals(order, other.order);
+		return Objects.equals(brand, other.brand) && Objects.equals(description, other.description) && id == other.id
+				&& Objects.equals(model, other.model);
 	}
 
 	@Override
 	public String toString() {
-		return "Bicycle [id=" + id + ", order=" + order + ", model=" + model + ", brand=" + brand + "]";
+		return "Bicycle [id=" + id + ", model=" + model + ", brand=" + brand + ", description=" + description + "]";
 	}
-
-	
 
 	
 }
