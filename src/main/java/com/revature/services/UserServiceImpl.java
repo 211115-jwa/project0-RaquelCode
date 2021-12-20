@@ -9,15 +9,13 @@ import com.revature.data.BicycleDAO;
 
 import com.revature.data.postgres.BicyclePostgres;
 
-
 public class UserServiceImpl implements UserService {
 	private BicycleDAO bicycleDao = new BicyclePostgres();
-	
 
 	@Override
 	public int addNewBicycle(Bicycle newBicycle) {
 		return bicycleDao.create(newBicycle);
-		
+
 	}
 
 	@Override
@@ -30,40 +28,33 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	
 	@Override
 	public Bicycle viewBicyclesById(int id) {
-		
-		
+
 		return bicycleDao.getById(id);
-		
+
 	}
-
-
-
 
 	@Override
 	public Set<Bicycle> searchBicyclesByDescription(String description) {
-		
+
 		Set<Bicycle> bicyclesFromDatabase = new HashSet<Bicycle>();
 		bicyclesFromDatabase = bicycleDao.getByDescription(description);
 		if (bicyclesFromDatabase != null) {
 			return bicyclesFromDatabase;
 		}
-		// TODO Auto-generated method stub
+
 		return bicyclesFromDatabase;
 	}
 
 	@Override
-	
-	  public Set<Bicycle> viewAllBicycles() { 
-		
-	  return bicycleDao.getAll(); 
-	  
-	}
-	 
 
-	
+	public Set<Bicycle> viewAllBicycles() {
+
+		return bicycleDao.getAll();
+
+	}
+
 	@Override
 	public Set<Bicycle> searchBicyclesByBrand(String brand) {
 		Set<Bicycle> bicyclesFromDatabase = new HashSet<Bicycle>();
@@ -73,11 +64,5 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
-
-	
-
-	
-
-	
 
 }

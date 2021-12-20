@@ -6,11 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-//this is a utility class for the purpose of opening connections with the database.it references the database.properties file from src/main/resources
-
-// this class follows the singleton design pattern // 
-/*private constructor,
-public static synchronized getter method)*/
 
 public class ConnectionUtil {
 	private static ConnectionUtil connUtil;
@@ -19,7 +14,7 @@ public class ConnectionUtil {
 	private ConnectionUtil() {
 		databaseProps = new Properties();
 
-		try { // grabbing the properties file using the JVM's class loader
+		try { 
 			InputStream propertiesFileStream = ConnectionUtil.class.getClassLoader()
 					.getResourceAsStream("database.properties");
 			databaseProps.load(propertiesFileStream);
