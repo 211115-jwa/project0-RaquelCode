@@ -2,70 +2,55 @@ package com.revature.beans;
 
 import java.util.Objects;
 
-public class Bicycle{
-
+public class Bicycle {
 	private int id;
-	private String model;
-	private String brand;
-	private String description;
+	private String Description;
+	private String Brand;
 	
-
-	public Bicycle() {
-		super();
-		
-		this.model = "";
-		this.brand = "";
-		this.description= "";
-		
-
-	}
-
-	public Bicycle(int id, String order, String model, String brand) {
-		super();
-		this.id = id;
-		
-		this.model = "Folding Bike";
-		this.brand = "Alan Bike";
-		this.description = " ";
+	
+	public Bicycle () {
+		id = 0;
+		Description = "";
+		Brand = "";
 		
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getModel() {
-		return model;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
 
 	public String getDescription() {
-		return description;
+		return Description;
 	}
 
+
 	public void setDescription(String description) {
-		this.description = description;
+		Description = description;
 	}
+
+
+	public String getBrand() {
+		return Brand;
+	}
+
+
+	public void setBrand(String brand) {
+		Brand = brand;
+	}
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(brand, description, id, model);
+		return Objects.hash(Brand, Description, id);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -76,18 +61,19 @@ public class Bicycle{
 		if (getClass() != obj.getClass())
 			return false;
 		Bicycle other = (Bicycle) obj;
-		return Objects.equals(brand, other.brand) && Objects.equals(description, other.description) && id == other.id
-				&& Objects.equals(model, other.model);
+		return Objects.equals(Brand, other.Brand) && Objects.equals(Description, other.Description) && id == other.id;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Bicycle [id=" + id + ", model=" + model + ", brand=" + brand + ", description=" + description + "]";
+		return "Bicycle [id=" + id + ", Description=" + Description + ", Brand=" + Brand + "]";
 	}
 
+
 	
+
+
+	
+
 }
-
-	
-
-	

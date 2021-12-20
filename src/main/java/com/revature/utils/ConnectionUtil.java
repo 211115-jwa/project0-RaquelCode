@@ -1,34 +1,59 @@
 package com.revature.utils;
-
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+
+//this is a utility class for the purpose of opening connections with the database.it references the database.properties file from src/main/resources
+
+// this class follows the singleton design pattern // 
+/*private constructor,
+public static synchronized getter method)*/
 
 public class ConnectionUtil {
-	
-	
-	public static Connection getConnection() throws SQLException {
-		
-		//For many frameworks using JDBC it is necessary to "register" the driver 
-		//in order for the framework to be aware of it. 
-		try {
-			Class.forName("org.postgresql.Driver");
-		}catch(ClassNotFoundException e) {
+	private static ConnectionUtil connUtil;
+	private static Properties databaseProps;
+
+	private ConnectionUtil() {
+		databaseProps = new Properties();
+
+		try { // grabbing the properties file using the JVM's class loader
+			InputStream propertiesFileStream = ConnectionUtil.class.getClassLoader()
+					.getResourceAsStream("database.properties");
+			databaseProps.load(propertiesFileStream);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		String url = "jdbc:postgresql://revanturedb.ceux8nympyyb.us-west-1.rds.amazonaws.com:5432/postgres";
-		String username = "postgres"; //It is possible to use env variables to hide this information
-		String password = "Rmoura24"; // you would access them with System.getenv("var-name");
-		
-		return DriverManager.getConnection(url, username, password);
 	}
-	
-	
-	  public static void main(String[] args) { try(Connection conn =
-	  ConnectionUtil.getConnection()){
-	  System.out.println("Connection Successful!"); }catch(SQLException e) {
-	  e.printStackTrace(); } }
-	 
 
+	public static synchronized ConnectionUtil getConnectionUtil() {
+		if (connUtil == null)
+			connUtil = new ConnectionUtil();
+		return connUtil;
+	}
+
+	public Connection getConnection() {
+		Connection conn = null;
+		try {
+			Class.forName(databaseProps.getProperty("drv"));
+			conn = DriverManager.getConnection(databaseProps.getProperty("url"), databaseProps.getProperty("usr"),
+					databaseProps.getProperty("psw"));
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return conn;
+		
+	}
+	public static void main(String[] args) {
+		
+		ConnectionUtil conn2 = new ConnectionUtil();
+		 
+	    conn2.getConnection();
+		
+		 System.out.println("Sussecefull connected");
+		 }	 
 }
+

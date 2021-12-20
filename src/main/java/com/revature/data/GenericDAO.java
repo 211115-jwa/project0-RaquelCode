@@ -1,20 +1,14 @@
-/**
- * 
- */
 package com.revature.data;
 
 import java.util.Set;
 
-import com.revature.beans.Customer;
 
 
-//DAO: data access object
-//an object that is designed for exclusively accessing data (e.g. in a database)
-//the <D> generic type represents the type of Data you are working with (person, pet, etc)
+// DAO: data access object
+// an object that is designed for exclusively accessing data (e.g. in a database)
+// the <D> generic type represents the type of Data you are working with (person, pet, etc)
 
 /*
- * @author raquelsmoura
- * @param <D>
  * why use generics rather than just "Object"?
  * generics give you compile time type safety -
  * you set the type in your code so that when
@@ -25,12 +19,12 @@ import com.revature.beans.Customer;
  * compile time.
  */
 public interface GenericDAO<D> {
-	
+	// accessing the database should use CRUD operations:
+	// create, read, update, delete
 	public int create(D dataToAdd);
 	public D getById(int id);
 	public Set<D> getAll();
 	public void update(D dataToUpdate);
 	public void delete(D dataToDelete);
-	Customer getByUsername(String username);
-
+	
 }
